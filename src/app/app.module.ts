@@ -24,9 +24,12 @@ import { PokemonService } from './services/pokemon.service';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatListModule } from '@angular/material/list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { PokemonInfoDialogComponent } from './shared/pokemon-info-dialog/pokemon-info-dialog.component';
+import { MatDialogModule  } from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
+  declarations: [AppComponent, HomeComponent, PokemonInfoDialogComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -44,8 +47,14 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatGridListModule,
     MatListModule,
     MatSnackBarModule,
+    MatProgressSpinnerModule,
+    MatDialogModule
+
   ],
-  providers: [WeatherService, PokemonService],
+  providers: [
+    WeatherService,
+    PokemonService
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

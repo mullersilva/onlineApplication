@@ -27,37 +27,17 @@
       </div>
       <div class="container-button">
         <section>
-          <div class="example-button-row">
+          <div class="button-search">
             <button
               mat-raised-button
               (click)="
-                searchWeatherMap(
-                  cityFormControl.value ? cityFormControl.value : ''
-                )
-              "
+                searchWeatherMap(cityFormControl.value ? cityFormControl.value : '' )"
               [disabled]="cityFormControl.invalid"
             >
               Buscar
             </button>
           </div>
         </section>
-      </div>
-      <div *ngIf="showGrid">
-        <mat-list>
-          <mat-list-item>
-            <span matListItemTitle>Temperatura</span>
-            <span matListItemLine> {{ temperatureCelsius }} ºC</span>
-          </mat-list-item>
-          <mat-list-item>
-            <span matListItemTitle>Clima</span>
-            <span *ngIf="isRain; else notRaining">Está chovendo</span>
-            <ng-template #notRaining>Não está chovendo</ng-template>
-          </mat-list-item>
-          <mat-list-item>
-            <span matListItemTitle>Pokemon</span>
-            {{ pokemonNameSelected | titlecase }}
-          </mat-list-item>
-        </mat-list>
       </div>
     </mat-card-content>
   </mat-card>

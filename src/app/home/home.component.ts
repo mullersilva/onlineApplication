@@ -4,6 +4,8 @@ import { FormControl, Validators } from '@angular/forms';
 import { WeatherService } from '../services/weather.service';
 import { Pokemon } from '../models/pokemon';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog , MAT_DIALOG_DATA, MatDialogModule} from '@angular/material/dialog';
+import { PokemonInfoDialogComponent } from '../shared/pokemon-info-dialog/pokemon-info-dialog.component';
 
 @Component({
   selector: 'app-home',
@@ -25,17 +27,22 @@ export class HomeComponent {
   //Grid control
   showGrid: boolean = false;
 
+  //Spinner control
+  isLoading: boolean = false;
+
   constructor(
     private weatherService: WeatherService,
     private PokemonService: PokemonService,
     private ref: ChangeDetectorRef,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit() {}
 
   searchWeatherMap(city: string) {
     this.showGrid = false;
+    this.isLoading = true;
 
     this.weatherService.searchWeatherMap(city).subscribe((res) => {
       this.prepareData(res);
@@ -44,12 +51,14 @@ export class HomeComponent {
         this.pokemonDefinition();
       } else {
         this.pokemonType = 'electric';
+        this.isLoading = false;
       }
 
       this.searchPokemonByType();
     },
     (error) => {
       console.error('Ocorreu um erro na requisição de clima:', error);
+      this.isLoading = false;
       this.showMessage('Preparece para a encrenca, encrenca em dobro! Cidade não encontrada =(');
     }
     );
@@ -58,6 +67,7 @@ export class HomeComponent {
   searchPokemonByType() {
     this.PokemonService.searchPokemonByType(this.pokemonType).subscribe(
       (res) => {
+        this.pokemonNameSelected = res.id;
         const pokemonNames: Pokemon[] = [];
 
         for (let i = 0; i < res.pokemon.length; i++) {
@@ -71,15 +81,15 @@ export class HomeComponent {
   }
 
   prepareData(data: any) {
-    const temperatureFahrenheit = data.main.temp;
+    const temperatureKelvin = data.main.temp;
 
-    this.fahrenheitConverter(temperatureFahrenheit);
+    this.kelvinConverter(temperatureKelvin);
     this.isRain = data.weather[0].main === 'Rain';
   }
 
-  fahrenheitConverter(temperatureFahrenheit: number) {
+  kelvinConverter(temperatureKelvin: number) {
     const absoluteZero = 273.15;
-    this.temperatureCelsius = Math.round(temperatureFahrenheit - absoluteZero);
+    this.temperatureCelsius = Math.round(temperatureKelvin - absoluteZero);
   }
 
   pokemonDefinition() {
@@ -127,7 +137,9 @@ export class HomeComponent {
     }
 
     this.showGrid = true;
+    this.isLoading = false;
     this.ref.detectChanges();
+    this.openPokemonView();
     this.showMessage('Quem é esse Pokemon?');
   }
 
@@ -135,5 +147,18 @@ export class HomeComponent {
     this.snackBar.open(mensagem, 'Fechar', {
       duration: 5000,
     });
+  }
+
+  openPokemonView() {
+    this.dialog.open(PokemonInfoDialogComponent, {
+      width: '450px',
+      data: {
+        temperature: this.temperatureCelsius,
+        rain: this.isRain ,
+        pokemonName: this.pokemonNameSelected ,
+        type: this.pokemonType,
+      },
+    });
+
   }
 }

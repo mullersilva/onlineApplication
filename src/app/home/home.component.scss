@@ -27,7 +27,7 @@ section {
   min-width: 120px;
 }
 
-.example-button-row {
+.button-search {
   display: table-cell;
   max-width: 600px;
 }
@@ -65,7 +65,7 @@ section {
 .search-card {
   background-color: rgb(179, 209, 204);
   width: 300px;
-  height: 400px;
+  height: 3000px;
 
 }
 
@@ -74,10 +74,24 @@ section {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 50vh;
+  height: 20vh;
+  margin-top: 20px;
 }
 
-.example-list-wrapping {
-  max-width: 500px;
+.center-spinner {
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
+
+.button-pokemon-view {
+  display: table-cell;
+  max-width: 600px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
 

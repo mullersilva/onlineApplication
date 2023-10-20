@@ -11,6 +11,10 @@ export class PokemonService {
   ) { }
 
   searchPokemonByType(pokemonType: string) {
-    return this.httpClient.get<any>('https://pokeapi.co/api/v2/type/' + pokemonType)
+    return this.httpClient.get<any>('https://pokeapi.co/api/v2/type/' + pokemonType);
+  }
+
+  searchPokemonById(pokemonName: string){
+    return this.httpClient.get<any>('https://pokeapi.co/api/v2/pokemon/' + pokemonName);
   }
 }

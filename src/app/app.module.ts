@@ -22,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { WeatherService } from './services/weather.service';
 import { PokemonService } from './services/pokemon.service';
 import { MatGridListModule } from '@angular/material/grid-list';
-import {MatListModule} from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
@@ -41,7 +42,8 @@ import {MatListModule} from '@angular/material/list';
     NgIf,
     HttpClientModule,
     MatGridListModule,
-    MatListModule
+    MatListModule,
+    MatSnackBarModule,
   ],
   providers: [WeatherService, PokemonService],
   bootstrap: [AppComponent],

@@ -3,6 +3,7 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { WeatherService } from '../services/weather.service';
 import { Pokemon } from '../models/pokemon';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-home',
@@ -27,7 +28,8 @@ export class HomeComponent {
   constructor(
     private weatherService: WeatherService,
     private PokemonService: PokemonService,
-    private ref: ChangeDetectorRef
+    private ref: ChangeDetectorRef,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {}
@@ -45,7 +47,12 @@ export class HomeComponent {
       }
 
       this.searchPokemonByType();
-    });
+    },
+    (error) => {
+      console.error('Ocorreu um erro na requisição de clima:', error);
+      this.showMessage('Preparece para a encrenca, encrenca em dobro! Cidade não encontrada =(');
+    }
+    );
   }
 
   searchPokemonByType() {
@@ -59,7 +66,7 @@ export class HomeComponent {
         }
 
         this.randomlySelect(pokemonNames);
-      }
+      },
     );
   }
 
@@ -121,5 +128,12 @@ export class HomeComponent {
 
     this.showGrid = true;
     this.ref.detectChanges();
+    this.showMessage('Quem é esse Pokemon?');
+  }
+
+  showMessage(mensagem: string) {
+    this.snackBar.open(mensagem, 'Fechar', {
+      duration: 5000,
+    });
   }
 }

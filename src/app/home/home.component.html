@@ -17,6 +17,7 @@
               matInput
               [formControl]="cityFormControl"
               placeholder="Ex. New York"
+              (keyup.enter)="searchWeatherMap(cityFormControl.value ? cityFormControl.value : '' )"
             />
             <mat-error *ngIf="cityFormControl.hasError('required')"
               >Necessário preenchimento do campo

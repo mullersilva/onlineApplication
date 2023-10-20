@@ -1,27 +1,31 @@
-<h1 mat-dialog-title>Pokemon encontrado!</h1>
-<div mat-dialog-content>
-  <ul>
-    <mat-list>
-      <mat-list-item>
-        <span matListItemTitle style="font-weight: bold">Temperatura Atual na cidade</span>
-        <span matListItemLine> {{ data.temperature }} ºC</span>
-      </mat-list-item>
-      <mat-list-item>
-        <span matListItemTitle style="font-weight: bold">Clima</span>
-        <span *ngIf="data.rain; else notRaining">Está chovendo</span>
-        <ng-template #notRaining>Não está chovendo</ng-template>
-      </mat-list-item>
-      <mat-list-item>
-        <span matListItemTitle style="font-weight: bold">Pokemon</span>
-        {{ data.pokemonName | titlecase }}
-      </mat-list-item>
-      <mat-list-item>
-        <span matListItemTitle style="font-weight: bold">Tipo</span>
-        {{ data.type | titlecase }}
-      </mat-list-item>
-    </mat-list>
-    <div class="center-img">
-      <img [src]="this.pokemonImg" alt="Imagem do Pokémon" height="200">
-    </div>
-  </ul>
+<mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+<div *ngIf="!isLoading">
+  <h1 mat-dialog-title>Pokemon encontrado!</h1>
+  <div mat-dialog-content>
+    <ul>
+      <mat-list>
+        <mat-list-item>
+          <span matListItemTitle style="font-weight: bold">Temperatura Atual na cidade</span>
+          <span matListItemLine> {{ data.temperature }} ºC</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle style="font-weight: bold">Clima</span>
+          <span *ngIf="data.rain; else notRaining">Está chovendo</span>
+          <ng-template #notRaining>Não está chovendo</ng-template>
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle style="font-weight: bold">Pokemon</span>
+          {{ data.pokemonName | titlecase }}
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle style="font-weight: bold">Tipo</span>
+          {{ data.type | titlecase }}
+        </mat-list-item>
+      </mat-list>
+      <div class="center-img">
+        <img [src]="this.pokemonImg" alt="Imagem do Pokémon" height="200">
+      </div>
+    </ul>
+  </div>
 </div>
+

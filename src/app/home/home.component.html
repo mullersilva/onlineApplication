@@ -1,0 +1,64 @@
+<div>
+  <mat-card class="header-card">
+    <mat-card-content class="content-card">
+      Localize seu Pokemon
+    </mat-card-content>
+  </mat-card>
+</div>
+<div class="center-container">
+  <mat-card class="search-card">
+    <mat-card-content>
+      <div class="container">
+        <form class="form">
+          <mat-form-field class="example">
+            <mat-label>Cidade</mat-label>
+            <input
+              type="city"
+              matInput
+              [formControl]="cityFormControl"
+              placeholder="Ex. New York"
+            />
+            <mat-error *ngIf="cityFormControl.hasError('required')"
+              >Necessário preenchimento do campo
+              <strong>Cidade!</strong></mat-error
+            >
+          </mat-form-field>
+        </form>
+      </div>
+      <div class="container-button">
+        <section>
+          <div class="example-button-row">
+            <button
+              mat-raised-button
+              (click)="
+                searchWeatherMap(
+                  cityFormControl.value ? cityFormControl.value : ''
+                )
+              "
+              [disabled]="cityFormControl.invalid"
+            >
+              Buscar
+            </button>
+          </div>
+        </section>
+      </div>
+      <div *ngIf="showGrid">
+        <mat-list>
+          <mat-list-item>
+            <span matListItemTitle>Temperatura</span>
+            <span matListItemLine> {{ temperatureCelsius }} ºC</span>
+          </mat-list-item>
+          <mat-list-item>
+            <span matListItemTitle>Clima</span>
+            <span *ngIf="isRain; else notRaining">Está chovendo</span>
+            <ng-template #notRaining>Não está chovendo</ng-template>
+          </mat-list-item>
+          <mat-list-item>
+            <span matListItemTitle>Pokemon</span>
+            {{ pokemonNameSelected | titlecase }}
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

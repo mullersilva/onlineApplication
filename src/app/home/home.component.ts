@@ -6,6 +6,7 @@ import { Pokemon } from '../models/pokemon';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog , MAT_DIALOG_DATA, MatDialogModule} from '@angular/material/dialog';
 import { PokemonInfoDialogComponent } from '../shared/pokemon-info-dialog/pokemon-info-dialog.component';
+import { PokemonType } from '../enums/pokemon-type.enum';
 
 @Component({
   selector: 'app-home',
@@ -95,28 +96,28 @@ export class HomeComponent {
   pokemonDefinition() {
     switch (true) {
       case this.temperatureCelsius < 5:
-        this.pokemonType = 'ice';
+        this.pokemonType = PokemonType.Ice;
         break;
       case this.temperatureCelsius >= 5 && this.temperatureCelsius < 10:
-        this.pokemonType = 'water';
+        this.pokemonType = PokemonType.Water;
         break;
       case this.temperatureCelsius >= 12 && this.temperatureCelsius < 15:
-        this.pokemonType = 'grass';
+        this.pokemonType = PokemonType.Grass;
         break;
       case this.temperatureCelsius >= 15 && this.temperatureCelsius < 21:
-        this.pokemonType = 'ground';
+        this.pokemonType = PokemonType.Ground;
         break;
       case this.temperatureCelsius >= 23 && this.temperatureCelsius < 27:
-        this.pokemonType = 'bug';
+        this.pokemonType = PokemonType.Bug;
         break;
       case this.temperatureCelsius >= 27 && this.temperatureCelsius < 33:
-        this.pokemonType = 'rock';
+        this.pokemonType = PokemonType.Rock;
         break;
       case this.temperatureCelsius > 33:
-        this.pokemonType = 'fire';
+        this.pokemonType = PokemonType.Fire;
         break;
       default:
-        this.pokemonType = 'normal';
+        this.pokemonType = PokemonType.Normal;
     }
   }
 

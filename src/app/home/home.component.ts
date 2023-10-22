@@ -141,7 +141,7 @@ export class HomeComponent {
     this.isLoading = false;
     this.ref.detectChanges();
     this.openPokemonView();
-    this.showMessage('Quem é esse Pokemon?');
+    this.showMessage('Pokemon localizado com sucesso!');
   }
 
   showMessage(mensagem: string) {

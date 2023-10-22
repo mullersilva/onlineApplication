@@ -60,7 +60,7 @@ export class HomeComponent {
     (error) => {
       console.error('Ocorreu um erro na requisição de clima:', error);
       this.isLoading = false;
-      this.showMessage('Preparece para a encrenca, encrenca em dobro! Cidade não encontrada =(');
+      this.showMessage('Prepare-se para a encrenca, encrenca em dobro! Cidade não encontrada =(');
     }
     );
   }

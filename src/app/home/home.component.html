@@ -1,13 +1,9 @@
-<div>
-  <mat-card class="header-card">
-    <mat-card-content class="content-card">
-      Localize seu Pokemon
-    </mat-card-content>
-  </mat-card>
-</div>
 <div class="center-container">
   <mat-card class="search-card">
     <mat-card-content>
+      <div class="content-card">
+        Localize seu Pokemon
+      </div>
       <div class="container">
         <form class="form">
           <mat-form-field class="example">
@@ -31,6 +27,7 @@
           <div class="button-search">
             <button
               mat-raised-button
+              color="warn"
               (click)="
                 searchWeatherMap(cityFormControl.value ? cityFormControl.value : '' )"
               [disabled]="cityFormControl.invalid"

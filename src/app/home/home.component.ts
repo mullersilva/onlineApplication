@@ -147,6 +147,7 @@ export class HomeComponent {
   showMessage(mensagem: string) {
     this.snackBar.open(mensagem, 'Fechar', {
       duration: 5000,
+      verticalPosition: "top"
     });
   }
 

@@ -31,6 +31,10 @@ export class HomeComponent {
   //Spinner control
   isLoading: boolean = false;
 
+  //Img
+  OnlineApplicationsLogo = "https://media.licdn.com/dms/image/C4D0BAQFvXMqkhWlqCw/company-logo_200_200/0/1669924816144?e=1706140800&v=beta&t=PaxtV-n-jjZ6dxQb83wwxVEMpU_euk8Af0ZT3dDt9kI"
+  pokemonLogo = "https://static.vecteezy.com/system/resources/previews/027/127/571/original/pokemon-logo-pokemon-icon-transparent-free-png.png"
+
   constructor(
     private weatherService: WeatherService,
     private PokemonService: PokemonService,

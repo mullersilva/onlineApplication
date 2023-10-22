@@ -64,7 +64,7 @@ section {
 }
 
 .search-card {
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(250, 232, 255);
   width: 1000px;
   height: 300px;
 
@@ -95,4 +95,14 @@ section {
   justify-content: center;
 }
 
+.center-img {
+  display: flex;
+  justify-content: start;
+  align-items:start;
+}
 
+.content-title {
+  font-weight: bold;
+  font-size: 23px;
+  font-family: 'Arial'
+}

@@ -7,4 +7,5 @@ export enum PokemonType {
   Rock = 'rock',
   Fire = 'fire',
   Normal = 'normal',
+  Electric = 'electric'
 }

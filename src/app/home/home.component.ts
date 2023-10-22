@@ -55,7 +55,7 @@ export class HomeComponent {
       if (!this.isRain) {
         this.pokemonDefinition();
       } else {
-        this.pokemonType = 'electric';
+        this.pokemonType = PokemonType.Electric;
         this.isLoading = false;
       }
 
@@ -82,6 +82,10 @@ export class HomeComponent {
 
         this.randomlySelect(pokemonNames);
       },
+      (error) => {
+        this.isLoading = false;
+        this.showMessage(error);
+      }
     );
   }
 

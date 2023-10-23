@@ -4,7 +4,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { WeatherService } from '../services/weather.service';
 import { Pokemon } from '../models/pokemon';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatDialog , MAT_DIALOG_DATA, MatDialogModule} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { PokemonInfoDialogComponent } from '../shared/pokemon-info-dialog/pokemon-info-dialog.component';
 import { PokemonType } from '../enums/pokemon-type.enum';
 
@@ -32,7 +32,7 @@ export class HomeComponent {
   isLoading: boolean = false;
 
   //Img
-  OnlineApplicationsLogo = "https://media.licdn.com/dms/image/C4D0BAQFvXMqkhWlqCw/company-logo_200_200/0/1669924816144?e=1706140800&v=beta&t=PaxtV-n-jjZ6dxQb83wwxVEMpU_euk8Af0ZT3dDt9kI"
+  onlineApplicationsLogo = "https://media.licdn.com/dms/image/C4D0BAQFvXMqkhWlqCw/company-logo_200_200/0/1669924816144?e=1706140800&v=beta&t=PaxtV-n-jjZ6dxQb83wwxVEMpU_euk8Af0ZT3dDt9kI"
   pokemonLogo = "https://static.vecteezy.com/system/resources/previews/027/127/571/original/pokemon-logo-pokemon-icon-transparent-free-png.png"
 
   constructor(
